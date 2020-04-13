@@ -2,20 +2,20 @@
 """
 Created on Mon Apr  6 00:05:13 2020
 
-@author: Admin
+@author: Neeraj Kumar S J
 """
-########################################importing the necassary modules########
+########################################importing the necassary modules########################################
 import scipy
 from scipy import stats
 import statsmodels.api as sm
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-#########################################Loading the data to a dataframe#######
+#########################################Loading the data to a dataframe#######################################
 labtat = pd.read_csv("E:\\Neeraj\\Exam and Careers\\DataScience\\Data Sets\\LabTAT.csv")
 labtat.columns = "lab1" , "lab2" , "lab3", "lab4" #renaming the columns as per need.
 labtat.describe()
-#########################################Visualization and Editing of data#####
+#########################################Visualization and Editing of data#####################################
 plt.hist(labtat['lab1'])
 plt.boxplot(labtat['lab1'])
 #labtat.iloc[66:0,0:1]=149.24
@@ -36,7 +36,7 @@ labtat.loc[72,'lab4'] = labtat.loc[108,'lab4']
 labtat.loc[109,'lab4'] = labtat.loc[32,'lab4']
 plt.hist(labtat['lab4'])
 plt.boxplot(labtat['lab4'])
-########################################Normality test#########################
+########################################Normality test#########################################################
 w = stats.shapiro(labtat.lab1)
 P_value_lab1 = w[1]
 t_stats_lab1 = w[0]
@@ -53,6 +53,7 @@ z = stats.shapiro(labtat.lab4)
 P_value_lab4 = z[1]
 t_stats_lab4 = z[0]
 print(f'As P Value for Laboratory 4 or Sample Y4 :{P_value_lab4} is greater than 0.05, Hence Sample Y4 is normal')
-######################################Variance test############################
+######################################Variance test##############################################################
 u = scipy.stats.levene(labtat.lab1,labtat.lab2,labtat.lab3,labtat.lab4)
+######################################Printng the obained results################################################
 print(f'As P Value for comparing lab1, lab2, lab3 & lab4 is :{u[1]}, which is lesser than 0.05, Hence we can conclude Variances of Sample Y1, Y2, Y3 and Y4 are not same.\nHence Ho is acceptable. ')
