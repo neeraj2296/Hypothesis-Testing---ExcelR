@@ -2,7 +2,7 @@
 """
 Created on Mon Apr  6 22:00:54 2020
 
-@author: Neeraj Kumar SJ
+@author: Neeraj Kumar S J
 """
 
 ########################################importing the necassary modules###############################################
