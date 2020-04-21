@@ -54,6 +54,13 @@ P_value_lab4 = z[1]
 t_stats_lab4 = z[0]
 print(f'As P Value for Laboratory 4 or Sample Y4 :{P_value_lab4} is greater than 0.05, Hence Sample Y4 is normal')
 ######################################Variance test##############################################################
-u = scipy.stats.levene(labtat.lab1,labtat.lab2,labtat.lab3,labtat.lab4)
+scipy.stats.levene(labtat.lab1,labtat.lab2,labtat.lab3,labtat.lab4)
+######################################On Way Anova Test########################
+from statsmodels.formula.api import ols
+mod = ols('lab1~lab2+lab3+lab4',data =  labtat).fit()
+aov_table = sm.stats.anova_lm(mod, type=2)
+print(aov_table)
 ######################################Printng the obained results################################################
-print(f'As P Value for comparing lab1, lab2, lab3 & lab4 is :{u[1]}, which is lesser than 0.05, Hence we can conclude Variances of Sample Y1, Y2, Y3 and Y4 are not same.\nHence Ho is acceptable. ')
+u = aov_table.iloc[:1,4:]
+print(f'As P Value for comparing lab1, lab2, lab3 & lab4 is :{u}, which is lesser than 0.05, Hence we can conclude Variances of Sample Y1, Y2, Y3 and Y4 are not same.\nHence Ho is acceptable. ')
+
